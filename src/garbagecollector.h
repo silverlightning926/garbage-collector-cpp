@@ -10,8 +10,8 @@ class GarbageCollector {
   ~GarbageCollector();
 
   Object* allocate();
+  Object* allocate(bool isRoot);
   void addRoot(Object* root);
-  void removeRoot(Object* root);
   void markAll();
   void sweep();
 

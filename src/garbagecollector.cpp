@@ -5,28 +5,15 @@
 
 GarbageCollector::~GarbageCollector() { sweep(); }
 
-Object* GarbageCollector::allocate() {
-  std::cout << "Allocating new object." << std::endl;
+Object* GarbageCollector::allocate() { return allocate(false); }
 
-  Object* obj = new Object;
+Object* GarbageCollector::allocate(bool isRoot) {
+  Object* obj = new Object();
   objects.push_back(obj);
 
+  if (isRoot) roots.push_back(obj);
+
   return obj;
-}
-
-void GarbageCollector::addRoot(Object* root) {
-  std::cout << "Adding root object: " << root << std::endl;
-
-  roots.push_back(root);
-}
-
-void GarbageCollector::removeRoot(Object* root) {
-  std::cout << "Removing root object: " << root << std::endl;
-
-  std::vector<Object*>::iterator it =
-      std::find(roots.begin(), roots.end(), root);
-
-  if (it != roots.end()) roots.erase(it);
 }
 
 void GarbageCollector::markAll() {
