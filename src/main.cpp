@@ -7,11 +7,8 @@ int main() {
   GarbageCollector gc;
 
   // Creating Roots
-  Object* root1 = gc.allocate();
-  Object* root2 = gc.allocate();
-
-  gc.addRoot(root1);
-  gc.addRoot(root2);
+  Object* root1 = gc.allocate(true);
+  Object* root2 = gc.allocate(true);
 
   // Creating Refrences
   Object* refrence1 = gc.allocate();
@@ -32,6 +29,10 @@ int main() {
   // Perform Garbage Collection;
   gc.markAll();
   gc.sweep();
+
+  // Print Current State
+  gc.printObjects();
+  gc.printRoots();
 
   return 0;
 }

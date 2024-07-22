@@ -15,6 +15,9 @@ class GarbageCollector {
   void markAll();
   void sweep();
 
+  void printObjects() const;
+  void printRoots() const;
+
  private:
   void mark(Object* obj);
 
