@@ -12,7 +12,7 @@ Object::~Object() {
 }
 
 void Object::addReference(Object* objPtr) {
-  std::cout << "Adding Refrence to (" << objPtr << ") to Object at (" << this
-            << ")." << std::endl;
+  std::cout << "Adding Object Refrence: " << objPtr << " to Object: " << this
+            << std::endl;
   refrences.push_back(objPtr);
 }

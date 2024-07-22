@@ -5,10 +5,10 @@
 GarbageCollector::~GarbageCollector() { sweep(); }
 
 Object* GarbageCollector::allocate() {
+  std::cout << "Allocating new object." << std::endl;
+
   Object* obj = new Object;
   objects.push_back(obj);
-
-  std::cout << "Allocating " << obj << " for new Object." << std::endl;
 
   return obj;
 }
