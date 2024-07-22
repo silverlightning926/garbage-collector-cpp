@@ -3,9 +3,7 @@
 #include <iostream>
 
 Object::Object() {
-  std::cout << "Object created & allocated at address: " << this << std::endl
-            << std::endl;
-
+  std::cout << "Object created & allocated at address: " << this << std::endl;
   marked = false;
 }
 
