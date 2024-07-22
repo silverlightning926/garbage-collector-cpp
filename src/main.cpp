@@ -6,22 +6,30 @@ int main() {
   // Instantiating Garbage Collector
   GarbageCollector gc;
 
-  // Allocation Of Root Object
-  Object* root = gc.allocate();
+  // Creating Roots
+  Object* root1 = gc.allocate();
+  Object* root2 = gc.allocate();
 
-  // Allocation Of Child Refrences
+  gc.addRoot(root1);
+  gc.addRoot(root2);
+
+  // Creating Refrences
   Object* refrence1 = gc.allocate();
   Object* refrence2 = gc.allocate();
+  Object* refrence3 = gc.allocate();
 
-  // Set Up Refrences
-  root->addReference(refrence1);
-  root->addReference(refrence2);
+  // Adding Refrences To Roots
+  root1->addReference(refrence1);
+  root1->addReference(refrence2);
 
-  // Simulate some objects becoming unreachable
+  root2->addReference(refrence3);
+
+  // Simulating Roots Becoming Unreachable
   refrence1 = nullptr;
   refrence2 = nullptr;
+  refrence3 = nullptr;
 
-  // Preform Garbage Collection
+  // Perform Garbage Collection;
   gc.markAll();
   gc.sweep();
 
