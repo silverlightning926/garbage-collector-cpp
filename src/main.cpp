@@ -22,7 +22,7 @@ int main() {
   refrence2 = nullptr;
 
   // Preform Garbage Collection
-  gc.markAll(root);
+  gc.markAll();
   gc.sweep();
 
   return 0;

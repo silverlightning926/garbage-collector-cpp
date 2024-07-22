@@ -10,11 +10,13 @@ class GarbageCollector {
   ~GarbageCollector();
 
   Object* allocate();
-  void markAll(Object* root);
+  void markAll();
   void sweep();
 
  private:
   void mark(Object* obj);
+
+  std::vector<Object*> roots;
   std::vector<Object*> objects;
 };
 

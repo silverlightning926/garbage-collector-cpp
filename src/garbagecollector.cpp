@@ -13,11 +13,13 @@ Object* GarbageCollector::allocate() {
   return obj;
 }
 
-void GarbageCollector::markAll(Object* root) {
-  std::cout << "Marking Root at " << root
-            << " and all refrences to not be deleted." << std::endl;
+void GarbageCollector::markAll() {
+  std::cout << "Marking all objects." << std::endl;
 
-  mark(root);
+  for (Object* root : roots) {
+    std::cout << "Marking root object: " << root << std::endl;
+    mark(root);
+  }
 }
 
 void GarbageCollector::sweep() {
