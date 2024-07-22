@@ -2,60 +2,60 @@
 
 #include <iostream>
 
-#include "object.h"
-
 GarbageCollector::~GarbageCollector() { sweep(); }
 
 Object* GarbageCollector::allocate() {
-  std::cout << "Allocating new object" << std::endl;
-
   Object* obj = new Object;
   objects.push_back(obj);
+
+  std::cout << "Allocating " << obj << " for new Object." << std::endl;
 
   return obj;
 }
 
 void GarbageCollector::markAll(Object* root) {
-  if (root) {
-    std::cout << "Marking root object at address: " << root << std::endl;
-    mark(root);
-  } else {
-    std::cout << "Root is null, nothing to mark." << std::endl;
-  }
+  std::cout << "Marking Root at " << root
+            << " and all refrences to not be deleted." << std::endl;
+
+  mark(root);
 }
 
 void GarbageCollector::sweep() {
-  std::cout << "Starting garbage collection sweep." << std::endl;
+  std::cout << "Performing Sweep on all objects." << std::endl;
 
-  for (auto it = objects.begin(); it != objects.end();) {
-    std::cout << "Checking object at address: " << *it << std::endl;
+  for (std::vector<Object*>::iterator it = objects.begin();
+       it != objects.end();) {
+    std::cout << "Checking " << *it << " for deletion." << std::endl;
 
     if (!(*it)->marked) {
       std::cout << "Object at address " << *it << " is unmarked. Deleting."
                 << std::endl;
+
       delete *it;
       it = objects.erase(it);
     } else {
       std::cout << "Object at address " << *it << " is marked. Keeping."
                 << std::endl;
+
       (*it)->marked = false;
       ++it;
     }
   }
-
-  std::cout << "Garbage collection sweep completed." << std::endl;
 }
 
 void GarbageCollector::mark(Object* obj) {
-  if (!obj) return;
-  if (obj->marked) return;
+  if (!obj || obj->marked) return;
+
+  std::cout << "Marking " << obj << " as not to be deleted." << std::endl;
 
   obj->marked = true;
-  std::cout << "Marked object at address: " << obj << std::endl;
+
+  std::cout << "Marking Refrences of " << obj << " as not to be deleted."
+            << std::endl;
 
   for (Object* ref : obj->refrences) {
-    std::cout << "Marking reference from object at address " << obj
-              << " to object at address " << ref << std::endl;
+    std::cout << "Marking Refrence of " << obj << ": " << ref
+              << " as not to be deleted." << std::endl;
     mark(ref);
   }
-}
+};
