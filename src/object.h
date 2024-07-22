@@ -5,6 +5,7 @@
 class Object {
  public:
   Object();
+  ~Object();
 
   bool marked;
   void addReference(Object* objectPtr);
