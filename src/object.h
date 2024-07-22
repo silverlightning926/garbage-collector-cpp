@@ -8,8 +8,6 @@ class Object {
 
   bool marked;
   void addReference(Object* objectPtr);
-
- private:
   std::vector<Object*> refrences;
 };
 
