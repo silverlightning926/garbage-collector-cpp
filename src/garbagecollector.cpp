@@ -66,21 +66,21 @@ void GarbageCollector::mark(Object* obj) {
 };
 
 void GarbageCollector::printObjects() const {
-  std::cout << "Printing all objects:" << std::endl;
+  std::cout << "Printing all objects: ";
 
   std::cout << "[";
   for (Object* obj : objects) {
     std::cout << obj << ", ";
   }
   std::cout << "]" << std::endl;
-}
+};
 
 void GarbageCollector::printRoots() const {
-  std::cout << "Printing all roots:" << std::endl;
+  std::cout << "Printing all roots: ";
 
   std::cout << "[";
   for (Object* root : roots) {
     std::cout << root << ", ";
   }
   std::cout << "]" << std::endl;
-}
+};
