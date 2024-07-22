@@ -1,5 +1,6 @@
 #include "garbagecollector.h"
 
+#include <algorithm>
 #include <iostream>
 
 GarbageCollector::~GarbageCollector() { sweep(); }
