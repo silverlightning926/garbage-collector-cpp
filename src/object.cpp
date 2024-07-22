@@ -1,5 +1,16 @@
 #include "object.h"
 
-Object::Object() { marked = false; }
+#include <iostream>
 
-void Object::addReference(Object* objPtr) { refrences.push_back(objPtr); }
+Object::Object() {
+  std::cout << "Object created & allocated at address: " << this << std::endl
+            << std::endl;
+
+  marked = false;
+}
+
+void Object::addReference(Object* objPtr) {
+  std::cout << "Added reference from object at address " << this
+            << " to object at address " << objPtr << std::endl;
+  refrences.push_back(objPtr);
+}
