@@ -13,6 +13,21 @@ Object* GarbageCollector::allocate() {
   return obj;
 }
 
+void GarbageCollector::addRoot(Object* root) {
+  std::cout << "Adding root object: " << root << std::endl;
+
+  roots.push_back(root);
+}
+
+void GarbageCollector::removeRoot(Object* root) {
+  std::cout << "Removing root object: " << root << std::endl;
+
+  std::vector<Object*>::iterator it =
+      std::find(roots.begin(), roots.end(), root);
+
+  if (it != roots.end()) roots.erase(it);
+}
+
 void GarbageCollector::markAll() {
   std::cout << "Marking all objects." << std::endl;
 
