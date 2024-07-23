@@ -15,6 +15,9 @@ GarbageCollector::~GarbageCollector() {
 Object* GarbageCollector::allocate() { return allocate(false); }
 
 Object* GarbageCollector::allocate(bool isRoot) {
+  isRoot ? std::cout << "Allocating new root object." << std::endl
+         : std::cout << "Allocating new object." << std::endl;
+
   Object* obj = new Object();
   objects.push_back(obj);
 
