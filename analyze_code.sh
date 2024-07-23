@@ -4,6 +4,7 @@ echo "====================================================="
 echo "clang-tidy"
 echo "====================================================="
 
+# Running clang-tidy
 if hash clang-tidy 2>/dev/null; then
   clang-tidy ./src/*.cpp --
 else
@@ -15,6 +16,7 @@ echo "====================================================="
 echo "clang-format"
 echo "====================================================="
 
+# Running clang-format
 if hash clang-format 2>/dev/null; then
   for f in ./src/*.{cpp,h}; do
     echo "Running clang-format on $f"
@@ -38,6 +40,7 @@ echo "====================================================="
 echo "valgrind"
 echo "====================================================="
 
+# Running valgrind
 if hash valgrind 2>/dev/null; then
   mkdir -p build
   g++ $(find src -name "*.cpp") -o ./build/main
