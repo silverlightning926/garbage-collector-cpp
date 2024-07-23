@@ -42,7 +42,7 @@ if hash valgrind 2>/dev/null; then
   mkdir -p build
   g++ $(find src -name "*.cpp") -o ./build/main
   valgrind --leak-check=full ./build/main
-  rm ./src/main
+  rm ./build/main
 else
   echo "WARNING: valgrind not available"
 fi
