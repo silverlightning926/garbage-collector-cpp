@@ -3,7 +3,14 @@
 #include <algorithm>
 #include <iostream>
 
-GarbageCollector::~GarbageCollector() { sweep(); }
+GarbageCollector::~GarbageCollector() {
+  sweep();
+
+  clear();
+
+  printRoots();
+  printObjects();
+}
 
 Object* GarbageCollector::allocate() { return allocate(false); }
 
@@ -84,3 +91,12 @@ void GarbageCollector::printRoots() const {
   }
   std::cout << "]" << std::endl;
 };
+
+void GarbageCollector::clear() {
+  for (Object* obj : objects) {
+    delete obj;
+  }
+
+  objects.clear();
+  roots.clear();
+}

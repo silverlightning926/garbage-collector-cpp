@@ -20,6 +20,7 @@ class GarbageCollector {
 
  private:
   void mark(Object* obj);
+  void clear();
 
   std::vector<Object*> roots;
   std::vector<Object*> objects;
