@@ -64,6 +64,20 @@ bash build_and_run.sh
 bash analyze_code.sh
 ```
 
+## Tools
+
+### Clang-Tidy
+
+[Clang-Tidy](https://clang.llvm.org/extra/clang-tidy/) is a clang-based C++ "linter" tool. Its purpose is to provide an extensible framework for diagnosing and fixing typical programming errors, like style violations, interface misuse, or bugs that can be deduced via static analysis.
+
+### Clang-Format
+
+[Clang-Format](https://clang.llvm.org/docs/ClangFormat.html) is a tool to format C++ code. It can take a C++ source file and reformat it in a way that conforms to the style of the LLVM project.
+
+### Valgrind
+
+[Valgrind](https://www.valgrind.org/) is a programming tool for memory debugging, memory leak detection, and profiling. It is a dynamic analysis tool that runs your program in a completely instrumented environment that tracks memory allocations, reads, and writes.
+
 ## Logic
 
 The logic of the garbage collector is mostly stored in the [GarbageCollector](src/garbage_collector.h) class.
