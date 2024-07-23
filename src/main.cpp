@@ -31,8 +31,8 @@ int main() {
   gc.sweep();
 
   // Print Current State
-  gc.printObjects();
   gc.printRoots();
+  gc.printObjects();
 
   return 0;
 }
