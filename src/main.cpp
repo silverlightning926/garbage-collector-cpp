@@ -10,14 +10,12 @@ int main() {
 
   // Creating Roots
   std::cout << "Creating Roots." << std::endl;
-
   Object* root1 = gc.allocate(true);
   Object* root2 = gc.allocate(true);
   std::cout << std::endl;
 
   // Creating Refrences
   std::cout << "Creating Refrences." << std::endl;
-
   Object* refrence1 = gc.allocate();
   Object* refrence2 = gc.allocate();
   Object* refrence3 = gc.allocate();
