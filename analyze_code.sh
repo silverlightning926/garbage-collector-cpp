@@ -33,3 +33,15 @@ if hash clang-format 2>/dev/null; then
 else
   echo "WARNING: clang-format not available"
 fi
+
+echo "====================================================="
+echo "valgrind"
+echo "====================================================="
+
+if hash valgrind 2>/dev/null; then
+  g++ $(find src -name "*.cpp") -o ./build/main
+  valgrind --leak-check=full ./build/main
+  rm ./src/main
+else
+  echo "WARNING: valgrind not available"
+fi
