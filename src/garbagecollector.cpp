@@ -65,10 +65,10 @@ void GarbageCollector::mark(Object* obj) {
 
   obj->marked = true;
 
-  std::cout << "Marking Refrences of " << obj << " as not to be deleted."
+  std::cout << "Marking References of " << obj << " as not to be deleted."
             << std::endl;
 
-  for (Object* ref : obj->refrences) {
+  for (Object* ref : obj->references) {
     std::cout << "Marking Refrence of " << obj << ": " << ref
               << " as not to be deleted." << std::endl;
     mark(ref);

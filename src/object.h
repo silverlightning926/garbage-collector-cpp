@@ -9,7 +9,7 @@ class Object {
 
   bool marked;
   void addReference(Object* objectPtr);
-  std::vector<Object*> refrences;
+  std::vector<Object*> references;
 };
 
 #endif
