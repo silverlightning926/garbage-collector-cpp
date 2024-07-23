@@ -6,8 +6,6 @@
 GarbageCollector::~GarbageCollector() {
   sweep();
 
-  clear();
-
   printRoots();
   printObjects();
 }
@@ -94,12 +92,3 @@ void GarbageCollector::printRoots() const {
   }
   std::cout << "]" << std::endl;
 };
-
-void GarbageCollector::clear() {
-  for (Object* obj : objects) {
-    delete obj;
-  }
-
-  objects.clear();
-  roots.clear();
-}
