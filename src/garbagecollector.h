@@ -7,7 +7,7 @@
 
 class GarbageCollector {
  public:
-  ~GarbageCollector();
+  ~GarbageCollector() noexcept;
 
   Object* allocate();
   Object* allocate(bool isRoot);
@@ -20,7 +20,6 @@ class GarbageCollector {
 
  private:
   void mark(Object* obj);
-  void clear();
 
   std::vector<Object*> roots;
   std::vector<Object*> objects;

@@ -3,11 +3,15 @@
 #include <algorithm>
 #include <iostream>
 
-GarbageCollector::~GarbageCollector() {
-  sweep();
+GarbageCollector::~GarbageCollector() noexcept {
+  std::cout << "Garbage Collector Deallocated." << std::endl;
 
-  printRoots();
-  printObjects();
+  for (Object* obj : objects) {
+    delete obj;
+  }
+
+  objects.clear();
+  roots.clear();
 }
 
 Object* GarbageCollector::allocate() { return allocate(false); }
@@ -16,7 +20,7 @@ Object* GarbageCollector::allocate(bool isRoot) {
   isRoot ? std::cout << "Allocating new root object." << std::endl
          : std::cout << "Allocating new object." << std::endl;
 
-  Object* obj = new Object();
+  auto* obj = new Object();
   objects.push_back(obj);
 
   if (isRoot) roots.push_back(obj);
@@ -36,8 +40,7 @@ void GarbageCollector::markAll() {
 void GarbageCollector::sweep() {
   std::cout << "Performing Sweep on all objects." << std::endl;
 
-  for (std::vector<Object*>::iterator it = objects.begin();
-       it != objects.end();) {
+  for (auto it = objects.begin(); it != objects.end();) {
     std::cout << "Checking " << *it << " for deletion." << std::endl;
 
     if (!(*it)->marked) {
